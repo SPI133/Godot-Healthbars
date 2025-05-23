@@ -1,7 +1,7 @@
 ## Health User Interface.
 ##
 ## This class is part of a tutorial on healthbars in Godot made by SPI133.
-## @tutorial: https://www.youtube.com/watch?v=dVIj3norXeU
+## @tutorial(Making some healthbars in the Godot Engine): https://www.youtube.com/watch?v=dVIj3norXeU
 
 class_name HealthUI
 extends Control
