@@ -1,0 +1,243 @@
+[gd_scene load_steps=25 format=3 uid="uid://br6gyn0ty7v7v"]
+
+[ext_resource type="Script" uid="uid://bpjsvk7ji38b4" path="res://health_ui.gd" id="1_tt5l4"]
+[ext_resource type="Texture2D" uid="uid://d1rwc8ibkmxo6" path="res://under.png" id="2_nwlpg"]
+[ext_resource type="Texture2D" uid="uid://cc2pi3o3kl7fw" path="res://over.png" id="3_u577o"]
+[ext_resource type="Texture2D" uid="uid://d5onimr2ju12" path="res://progress_white.png" id="4_tahm4"]
+[ext_resource type="Texture2D" uid="uid://lojo3bmcp4jc" path="res://over_2.png" id="5_tahm4"]
+[ext_resource type="Texture2D" uid="uid://dpd5yp4gg0ate" path="res://progress_color.png" id="6_qf0pb"]
+[ext_resource type="Texture2D" uid="uid://jlj0cy03tg44" path="res://under_clock.png" id="7_814dr"]
+[ext_resource type="Texture2D" uid="uid://b8cywwxhrul85" path="res://over_clock.png" id="8_mbijq"]
+[ext_resource type="Texture2D" uid="uid://b5xgau0yl1pl5" path="res://progress_clock.png" id="9_wvpgi"]
+[ext_resource type="Texture2D" uid="uid://0w8hsxyur01i" path="res://over_both.png" id="10_5o81u"]
+[ext_resource type="Texture2D" uid="uid://521g2yas2vid" path="res://progress_both.png" id="11_8w8oo"]
+[ext_resource type="Texture2D" uid="uid://cjcnr7v1aq8ss" path="res://under_both.png" id="12_w5syd"]
+[ext_resource type="Texture2D" uid="uid://8wu5nmqnwac8" path="res://over_both_2.png" id="13_lat4p"]
+[ext_resource type="Texture2D" uid="uid://bqxfjwddvkboo" path="res://progress_both_2.png" id="14_nni2c"]
+[ext_resource type="Texture2D" uid="uid://d000mpk3rprpi" path="res://under_both_2.png" id="15_yj8lr"]
+[ext_resource type="Texture2D" uid="uid://diljuk7ufbs4s" path="res://godot.png" id="16_w5syd"]
+[ext_resource type="Texture2D" uid="uid://dmv3it6npfcif" path="res://godot_damage.png" id="17_lat4p"]
+[ext_resource type="Texture2D" uid="uid://cobmwdk42lrra" path="res://heart_white.png" id="18_lat4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_auvdd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt5l4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy3an"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8hjw"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tt5l4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwlpg"]
+bg_color = Color(0.162624, 0.578451, 0.564847, 1)
+
+[node name="HealthUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tt5l4")
+
+[node name="Bar1" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_auvdd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tt5l4")
+value = 63.0
+show_percentage = false
+
+[node name="Bar1Damage" type="ProgressBar" parent="Bar1"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_iy3an")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t8hjw")
+show_percentage = false
+
+[node name="Label" type="Label" parent="Bar1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="ShieldBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 191.0
+offset_right = 491.0
+offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_tt5l4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nwlpg")
+show_percentage = false
+
+[node name="Bar2" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 87.0
+offset_right = 663.0
+offset_bottom = 161.0
+value = 42.0
+texture_under = ExtResource("2_nwlpg")
+texture_over = ExtResource("3_u577o")
+texture_progress = ExtResource("4_tahm4")
+tint_over = Color(0, 0, 0, 1)
+
+[node name="Bar3" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 179.0
+offset_right = 674.0
+offset_bottom = 253.0
+value = 50.0
+texture_over = ExtResource("5_tahm4")
+texture_progress = ExtResource("6_qf0pb")
+tint_over = Color(0, 0, 0, 1)
+
+[node name="Bar3Damage" type="TextureProgressBar" parent="Bar3"]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+texture_progress = ExtResource("4_tahm4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Bar4" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 269.0
+offset_right = 223.0
+offset_bottom = 482.0
+fill_mode = 4
+texture_under = ExtResource("7_814dr")
+texture_over = ExtResource("8_mbijq")
+texture_progress = ExtResource("9_wvpgi")
+
+[node name="Bar5" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 259.0
+offset_right = 745.0
+offset_bottom = 472.0
+value = 100.0
+fill_mode = 4
+radial_initial_angle = 250.0
+radial_fill_degrees = 286.0
+texture_over = ExtResource("10_5o81u")
+texture_progress = ExtResource("11_8w8oo")
+
+[node name="Bar5Damage" type="TextureProgressBar" parent="Bar5"]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 4
+radial_initial_angle = 250.0
+radial_fill_degrees = 286.0
+texture_under = ExtResource("12_w5syd")
+texture_progress = ExtResource("11_8w8oo")
+
+[node name="Bar6" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 428.0
+offset_right = 649.0
+offset_bottom = 464.0
+fill_mode = 1
+texture_over = ExtResource("13_lat4p")
+texture_progress = ExtResource("14_nni2c")
+
+[node name="Bar6Damage" type="TextureProgressBar" parent="Bar6"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_under = ExtResource("15_yj8lr")
+texture_progress = ExtResource("14_nni2c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 302.0
+offset_right = 697.0
+offset_bottom = 421.0
+texture = ExtResource("16_w5syd")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0.3241, 0.258944, 1)
+layout_mode = 0
+offset_left = 578.0
+offset_top = 302.0
+offset_right = 697.0
+offset_bottom = 421.0
+texture = ExtResource("17_lat4p")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="EmptyHearts" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = 535.0
+offset_right = 204.0
+offset_bottom = 611.0
+texture = ExtResource("18_lat4p")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="FullHearts" type="TextureRect" parent="."]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = 535.0
+offset_right = 204.0
+offset_bottom = 611.0
+texture = ExtResource("18_lat4p")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ShieldHearts" type="TextureRect" parent="."]
+modulate = Color(0, 0.752941, 1, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = 535.0
+offset_right = 204.0
+offset_bottom = 611.0
+texture = ExtResource("18_lat4p")
+expand_mode = 1
+stretch_mode = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
